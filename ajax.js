@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   pingRequest.addEventListener( 'click', function() {
   $.ajax( {
-        url: 'http://first-ajax-api.herokuapp.com/ping',
+        url: 'http://first-ajax-api.herokuapp.com/pingdfs',
         method: 'GET',
         dataType: 'text',
       }).done(function (responseData) {
@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         response.innerHTML = responseData;
         document.querySelector('#step3456').append(response);
       }).fail(function () {
+        console.log( 'The url is incorrect!' );
         console.log( textStatus, errorThrown );
     });
   });
