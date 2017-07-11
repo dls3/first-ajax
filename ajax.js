@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var response = document.createElement('p');
         response.innerHTML = responseData;
         document.querySelector('#step3456').append(response);
+      }).fail(function () {
+        console.log( textStatus, errorThrown );
     });
   });
 });
