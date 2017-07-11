@@ -6,27 +6,23 @@ document.addEventListener("DOMContentLoaded", function() {
   // REGISTER EVENT HANDLERS
 
   button.addEventListener( 'click', function() {
-    console.log( 'CLICKED GET ROOT BUTTON' );
-    console.log( 'BEFORE AJAX REQUEST' );
-
-    // MAKE AJAX REQUEST HERE
-
   $.ajax( {
         url: 'http://first-ajax-api.herokuapp.com/',
         method: 'GET',
-        dataType: 'html',
+        dataType: 'text',
       });
     });
 
   pingRequest.addEventListener( 'click', function() {
-    console.log( 'CLICKED GET ROOT BUTTON' );
-    console.log( 'BEFORE AJAX REQUEST' );
-    // MAKE AJAX REQUEST HERE
-
   $.ajax( {
         url: 'http://first-ajax-api.herokuapp.com/ping',
         method: 'GET',
-        dataType: 'html',
-      });
+        dataType: 'text',
+      }).done(function (responseData) {
+        console.log( responseData );
+        var response = document.createElement('p');
+        response.innerHTML = responseData;
+        document.querySelector('#step3456').append(response);
+    });
   });
 });
