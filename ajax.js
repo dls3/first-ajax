@@ -54,10 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
   $.ajax( {
         url: 'http://first-ajax-api.herokuapp.com/time',
         method: 'GET',
-         data: {
-           timezone: 'Pacific/Honolulu'
-         },
-         dataType: 'text'
+        // data: {},
+        dataType: 'html'
       }).done(function (responseData) {
         console.log( responseData );
         var response = document.createElement('p');
@@ -70,5 +68,24 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  car.addEventListener( 'click', function() {
+  $.ajax( {
+        url: 'http://first-ajax-api.herokuapp.com/a_car',
+        method: 'GET',
+         data: {
+           timezone: 'Pacific/Honolulu'
+         },
+         dataType: 'text'
+      }).done(function (responseData) {
+        console.log( responseData );
+        var carList = document.createElement('ul');
+        carList.innerHTML = responseData;
+        document.getElementById('step9').append(carList);
+      }).fail(function () {
+        console.log( 'The url is incorrect. Try harder next time' );
+      }).always(function () {
+        console.log( 'Request complete')
+    });
+  });
 
 });
