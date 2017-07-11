@@ -24,8 +24,10 @@ document.addEventListener("DOMContentLoaded", function() {
         response.innerHTML = responseData;
         document.querySelector('#step3456').append(response);
       }).fail(function () {
-        console.log( 'The url is incorrect!' );
-        console.log( textStatus, errorThrown );
+        console.log( 'The url is incorrect' );
+        // console.log( textStatus, errorThrown );
+      }).always(function () {
+        console.log( 'Request complete')
     });
   });
 });
