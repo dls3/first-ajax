@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
   //  DECLARE VARIABLES
   var button = document.getElementById( 'get_root' );
   var pingRequest = document.getElementById( 'ping' );
+  var stepSeven = document.getElementById( 'hive_mind' );
+  // Run AJAX Request to Count
   // REGISTER EVENT HANDLERS
 
   button.addEventListener( 'click', function() {
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   pingRequest.addEventListener( 'click', function() {
   $.ajax( {
-        url: 'http://first-ajax-api.herokuapp.com/pingdfs',
+        url: 'http://first-ajax-api.herokuapp.com/ping',
         method: 'GET',
         dataType: 'text',
       }).done(function (responseData) {
@@ -24,10 +26,49 @@ document.addEventListener("DOMContentLoaded", function() {
         response.innerHTML = responseData;
         document.querySelector('#step3456').append(response);
       }).fail(function () {
-        console.log( 'The url is incorrect' );
+        console.log( 'The url is incorrect. Try harder next time' );
         // console.log( textStatus, errorThrown );
       }).always(function () {
         console.log( 'Request complete')
     });
   });
+
+  hive_mind.addEventListener( 'click', function() {
+  $.ajax( {
+        url: 'http://first-ajax-api.herokuapp.com/count',
+        method: 'GET',
+        dataType: 'text',
+      }).done(function (responseData) {
+        console.log( responseData );
+        var response = document.createElement('p');
+        response.innerHTML = responseData;
+        document.querySelector('#step7').append(response);
+      }).fail(function () {
+        console.log( 'The url is incorrect. Try harder next time' );
+      }).always(function () {
+        console.log( 'Request complete')
+    });
+  });
+
+  time.addEventListener( 'click', function() {
+  $.ajax( {
+        url: 'http://first-ajax-api.herokuapp.com/time',
+        method: 'GET',
+         data: {
+           timezone: 'Pacific/Honolulu'
+         },
+         dataType: 'text'
+      }).done(function (responseData) {
+        console.log( responseData );
+        var response = document.createElement('p');
+        response.innerHTML = responseData;
+        document.querySelector('#step8').append(response);
+      }).fail(function () {
+        console.log( 'The url is incorrect. Try harder next time' );
+      }).always(function () {
+        console.log( 'Request complete')
+    });
+  });
+
+
 });
